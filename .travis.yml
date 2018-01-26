@@ -7,10 +7,6 @@ before_install:
 - export PYTHONPATH=$HOME/christopherjmedlin/blog.christophermedlin.me
 install:
 - pip install -r requirements.txt
-- pip install coverage coveralls
-script:
-- coverage run --source='blog' tests/runtests.py
-after_success: coveralls
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAJYVKOS6JZBD7RV7Q
