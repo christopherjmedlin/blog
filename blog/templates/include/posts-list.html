@@ -14,7 +14,7 @@
                     </h2>
                 </div>
                 <div class="post-author">
-                    <b>{{ post.author }}</b> <time class="timeago" datetime="{{ post.posted }}"></time>
+                    <b>{{ post.author }}</b> - <time class="timeago" datetime="{{ post.posted }}"></time>
                 </div>
                 {% if (session.username == post.author or session.isAdmin) %}
                 <div class="edit-delete-post-links">
