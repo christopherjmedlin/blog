@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/index.css" />
+{% endblock %}
+
+{% block content %}
+<h1>{{ blog_title }}</h1>
+<div class="main-content">
+    <div class="posts">
+        {% include 'include/posts-list.html' %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+  "name": "blog.christophermedlin.me",
+  "authors": [
+    "Christopher Medlin <christopherjmedlin@gmail.com>"
+  ],
+  "description": "Blog",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://blog.christophermedlin.me/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery-timeago": "timeago#^1.6.1",
+    "jquery-color": "^2.1.2",
+    "simplemde": "^1.11.2"
+  }
+}

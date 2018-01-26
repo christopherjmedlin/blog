@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} • {{ blog_title }}</title>
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/static/style/base.css" />
+        <link rel="stylesheet" href="/static/style/posts-list.css" />
+        <link rel="stylesheet" href="/static/style/search-bar.css" />
+        {% block styles %}
+        {% endblock %}
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,600,700&amp;lang=en">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:300,400,600,700&amp;lang=en">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="shortcut icon" href="/static/favicon.ico">
+    </head>
+
+    <body>
+        {% include 'include/top-nav.html' %}
+        
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% include 'include/footer.html' %}
+
+        <!-- Scripts -->
+        <!-- JQuery (and extensions) -->
+        <script src="{{ url_for('static', filename='bower/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bower/jquery-timeago/jquery.timeago.js') }}"></script>
+        <script src="{{ url_for('static', filename='bower/jquery-color/jquery.color.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/posts-list.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

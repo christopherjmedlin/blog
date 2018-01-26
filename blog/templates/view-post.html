@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/post.css" />
+<link rel="stylesheet" href="/static/style/view-post.css" />
+{% endblock %}
+
+{% block content %}
+{% include 'include/post.html' %}
+{% endblock %}

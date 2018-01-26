@@ -1,0 +1,14 @@
+#post {
+    text-align: center;
+    display: inline-block;
+    width: 500px;
+    margin: 50px;
+}
+
+.content {
+    text-align: center;
+}
+
+#disqus_thread {
+    margin-top: 50px;
+}

@@ -1,0 +1,17 @@
+<div class="component" id="top-nav">
+    <div class="navbar">
+        <nav class="navbar-nav {% if session.authenticated %}lg{% endif %}">
+            <ul>
+                <li><a href="/">HOME</a>&emsp;•&emsp;</li>
+                <li><a href="/posts">SEARCH</a>&emsp;•&emsp;</li>
+                {% if session.authenticated %}{% else %}
+                <li><a href="/login">LOGIN</a>&emsp;•&emsp;</li>
+                {% endif %}
+                <li><a href="/post/new">POST</a></li>
+                {% if session.authenticated %}
+                <li>&emsp;•&emsp;<a href="/logout">LOGOUT</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>

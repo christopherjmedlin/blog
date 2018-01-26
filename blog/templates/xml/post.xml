@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<post id="{{ post._id }}">
+    <id>{{ post._id }}</id>
+    <title>{{ post.title }}</title>
+    <content>
+        {% if markdown %}
+        {{ post.markdown }}
+        {% else %}
+        {{ post.content }}
+        {% endif %}
+    </content>
+    <author>{{ post.author }}</author>
+    <topics>
+        {% for topic in post.topics %}
+        <topic>{{ topic }}</topic>
+        {% endfor %}
+    </topics>
+</post>

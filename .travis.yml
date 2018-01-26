@@ -1,0 +1,25 @@
+language: python
+python:
+- 3.6
+services: mongodb
+before_install:
+- export DJANGO_SETTINGS_MODULE=landster.settings.dev
+- export PYTHONPATH=$HOME/christopherjmedlin/blog.christophermedlin.me
+install:
+- pip install -r requirements.txt
+- pip install coverage coveralls
+script:
+- coverage run --source='blog' tests/runtests.py
+after_success: coveralls
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAJYVKOS6JZBD7RV7Q
+  secret_access_key:
+    secure: u/5h/ajBMJ+47bOdTZCpriAcSTqYl/D5aKcsxuRFvXYXYvt5+fjnacnpOk5JxrlFEfl7DiYUCTkKT5gqXA1zTWtpmlBQpaAikGdKIVr41XtLK1K6B3Sb31g6xhPp5r6sbeDPhDQn4vVbW9CRKcIDFZ18+uPqNg5MvNVN4SZBsHjRzugihaSN/bMuSveYJsbNaXrpE+Ifyinu22Adrb68WvicPx7Oj0RClPAQF0v6mNVz5H5q9S7/DvgOUyrCgU+8yMtqMs/V//jT1UcYHBJsi+cU6GdBxc2euUzFJDJLcCTisWEc3vtNz4oosCrqjJXYmhLwA3eScwMJrpMg3BwlqXcfA/NcMkz5w8urrO3hNW6+GvZUaRMh/z1yklyeB313QcpiFPsHdIUuAL5KPfgGrMpDf/JMkmkxv9+h7jL0h75ao6MN7tXrr0R2MdVkj1pUQFlNO/ZYi8ILiUuljWrUIMU8eqZMeQhpc5ujUq9rMVAN36ztkGi3R4bq4qoWC4ITtvPTOmJDG33yOnJJ/PgQSoNXeq6oiZfyGuvN15zkTptVxP5kD+xaGC1VHG5HL3Xr5akOCwdc6yk0FioehZ16+AMRstirHorXfq4PeKdr0bmKKn9bDNQI9nCRzo6FdpO0+cvx/7opu5VUYexaTaNnm4SjV76FmD1ktuBg34vIs3g=
+  region: us-west-2
+  app: blog.christophermedlin.me
+  env: production
+  bucket_name: elasticbeanstalk-us-west-2-547394739663
+  on:
+    repo: christopherjmedlin/blog.christophermedlin.me
+    branch: production

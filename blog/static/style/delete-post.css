@@ -1,0 +1,8 @@
+.delete-post {
+    margin: 75px;
+    text-align: center;
+}
+
+#ajax-loader, #success {
+    display: none;
+}

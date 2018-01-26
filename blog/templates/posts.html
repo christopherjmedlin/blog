@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Posts{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/posts.css" />
+{% endblock %}
+
+{% block content %}
+{% include 'include/search-bar.html' %}
+{% include 'include/posts-list.html' %}
+<div class="next-page-link">
+<a href="{{ nextPage }}">
+    Next Page <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</a>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<div class="component" id="posts-list">
+    <ul class="posts-list">
+        {% for post in posts %}
+        <li>
+            {% if post.img %}
+            <div class="post-content-left">
+                <img src="{{ post.img }}"/>
+            </div>
+            {% endif %}
+            <div class="post-content-right {% if post.img %}{% else %}alt{% endif %}">
+                <div class="post-title">
+                    <h2>
+                        <a href="/posts/{{ post._id }}">{{ post.title }}</a>
+                    </h2>
+                </div>
+                <div class="post-author">
+                    <b>{{ post.author }}</b> <time class="timeago" datetime="{{ post.posted }}"></time>
+                </div>
+                {% if (session.username == post.author or session.isAdmin) %}
+                <div class="edit-delete-post-links">
+                    <a href="/posts/edit/{{ post._id }}">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a href="/posts/delete/{{ post._id }}">
+                        <i class="fa fa-trash-o"></i>    
+                    </a>
+                </div>
+                {% endif %}
+                <div class="content-preview">
+                    <!-- safe is added to properly render the (pre-sanitized) HTML -->
+                    <p>{{ post.content }}</p>
+                </div>
+            </div>
+            <div class="post-topics">
+                {% for topic in post.topics %}
+                <a href="/posts?topic={{ topic }}">{{ topic }}</a>
+                {% endfor %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

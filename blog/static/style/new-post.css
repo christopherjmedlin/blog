@@ -1,0 +1,66 @@
+.post-editor {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#markdown-editor .container {
+    display: inline-block;
+    width: 700px;
+}
+
+.content {
+    text-align: center;
+}
+
+#title-input {
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+h3 {
+    margin: 5px;
+}
+
+.topics {
+    display: inline-block;
+    height: 25px;
+    border: 1px solid lightgray;
+    width: 500px !important;
+    padding-top: 4px;
+    overflow: hidden;
+    text-align: left;
+    padding-left: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    height: 30px;
+    width: 60px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button:active {
+    background-color: gray;
+}
+
+.post-button {
+    margin-right: 10px;
+}
+
+#success {
+    display: none;
+    margin: 100px;
+}
+
+.err {
+    display: none;
+}
+
+.CodeMirror {
+    height: 500px;
+}

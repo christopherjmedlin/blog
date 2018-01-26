@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='bower/simplemde/dist/simplemde.min.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='style/new-post.css') }}" />
+{% endblock %}
+
+{% block content %}
+<div class="post-editor" id="post-form">
+    <p class="err err-missing-field">
+        One of the following required fields are missing: content, title
+    </p> 
+
+    {% include 'include/markdown-editor.html' %}
+    <div id="title-input">
+        <p class="err err-title-too-long">
+            Title must be less than 100 characters
+        </p><br />
+        Title: <input type="text" value="{% if post %}{{ post.title }}{% endif %}"/>
+    </div>
+    <h3>Topics</h3>
+    <p class="err err-too-many-topics">
+        Only 15 maximum topics allowed
+    </p>
+    {% include 'include/topic-chooser.html' %}
+    <button class="post-button" type="submit">{% if edit %}Update{% else %}Post{% endif %}</button>
+    <button class="cancel-button">Cancel</button>
+</div>
+
+<div class="post-editor" id="ajax-loader">
+        <img src="/static/img/ajax-loader.gif" />
+</div>
+
+<div id="success">
+    <h1>Your post has been {% if edit %}updated.{% else %}uploaded.{% endif %}</h1>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% if post %}
+<script>
+    var postID = "{{ post._id }}";
+</script>
+{% endif %}
+
+<script src="{{ url_for('static', filename='bower/simplemde/dist/simplemde.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/new-post.js') }}"></script>
+
+{% if post %}
+<script>
+    $(document).ready(function() {
+        $.ajax("/api/v1/posts/" + "{{ post._id }}" + "?markdown=true", {
+            method: 'GET',
+            
+            success: function(result) {
+                $('#post-form').show();
+                simplemde.value($.parseXML(result).getElementsByTagName("content")[0].innerHTML);         
+            }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}

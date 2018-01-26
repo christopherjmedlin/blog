@@ -1,0 +1,107 @@
+html {
+    font-family: 'Roboto Slab';
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline;
+    color: black;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: lightgray;
+}
+
+ul {
+    list-style: none;
+}
+
+#top-nav .navbar {
+    margin: 0;
+    height: 30px;
+
+    text-align: center;
+}
+
+.navbar-nav {
+    margin-top: 3px;
+    text-align: center;
+}
+
+.navbar-nav ul {
+    padding: 0;
+    width: 400px;
+    display: inline-block;
+    border-bottom: 2px solid black;
+}
+
+.navbar-nav ul li {
+    display: inline;
+}
+
+.navbar-nav ul li a {
+    font-weight: bold;
+    font-size: 17px;
+    font-family: 'Lora';
+}
+
+#footer {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#footer a {
+    margin-right: 15px;
+}
+
+.copyright {
+    font-size: 15px;
+}
+
+.copyright a {
+    text-decoration: underline;
+}
+
+.logged-in-as {
+    margin-bottom: 50px;
+}
+
+input[type="text"], input[type="password"], input[type="search"] {
+    width: 200px;
+    height: 30px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.err {
+    color: red;
+}
+
+.centered {
+    text-align: center;
+}
+
+button {
+    border: none;
+    width: 60px;
+}
+
+#footer i {
+    font-size: 20px;
+}
+
+a {
+    cursor: pointer;
+}

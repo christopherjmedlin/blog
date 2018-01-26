@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Post?{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/delete-post.css">
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var postID = "{{ post._id }}"
+
+    $("#confirm #yes").click(function() {
+        $("#confirm").hide();
+        $("#ajax-loader").show();
+        $.ajax({
+            url: '/api/v1/posts/' + postID,
+            type: 'DELETE',
+            success: function(result) {
+                $("#ajax-loader").hide();
+                $("#success").show();
+            },
+            error: function(result) {
+                $("#ajax-loader").hide()
+                $("#confirm").show()
+            }
+        });
+    })
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="delete-post" id="confirm">
+    <p>Are you sure you want to delete <b>{{ post.title }}</b>?</p>
+    <a id="yes">Yes</a> or <a href="/">No</a>
+</div>
+
+<div class="delete-post" id="ajax-loader">
+    <img src="/static/img/ajax-loader.gif" />
+</div>
+
+<div class="delete-post" id="success">
+    <b>{{ post.title }}</b> has been deleted.
+</div>
+{% endblock %}
