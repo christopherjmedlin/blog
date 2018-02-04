@@ -3,9 +3,9 @@
         <title>{% block title %}{% endblock %} • {{ blog_title }}</title>
         
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="/static/style/base.css" />
-        <link rel="stylesheet" href="/static/style/posts-list.css" />
-        <link rel="stylesheet" href="/static/style/search-bar.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/base.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/posts-list.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/search-bar.css') }}" />
         {% block styles %}
         {% endblock %}
 
@@ -16,7 +16,7 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="shortcut icon" href="/static/favicon.ico">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
 
     <body>
