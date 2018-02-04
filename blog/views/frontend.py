@@ -23,6 +23,7 @@ def index():
 def posts_search():
     topic = request.args.get('topic', None)
     query_string = request.args.get('q', None)
+
     try:
         page = int(request.args.get('page', 1))
     except Exception:
@@ -32,12 +33,12 @@ def posts_search():
     if topic and query_string:
         query = { "$and": [
             { 'topics': topic },
-            { 'title': { '$regex': '.*' + query_string + '.*'}}
+            { 'title': { '$regex': '.*' + query_string + '.*','$options': 'i'}}
         ]}
     elif topic:
         query = { 'topics': topic }
     elif query_string:
-        query = { 'title': { '$regex': '.*' + query_string + '.*'}}
+        query = { 'title': { '$regex': '.*' + query_string + '.*', '$options': 'i'}}
 
     if query != {}:
         posts = mongo.db.posts.find(query).sort([['_id', -1]])
