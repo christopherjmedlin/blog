@@ -24,6 +24,7 @@
 
 #posts-list .content-preview {
     text-align: left; 
+    height: 100px;
 }
 
 #posts-list .post-title {
@@ -36,7 +37,7 @@
 .post-content-left {
     display: inline-block;
     float: left;
-    height: 250;
+    height: 240;
 }
 
 .post-content-right {

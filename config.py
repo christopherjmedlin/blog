@@ -32,3 +32,4 @@ class ProductionConfig(Config):
     Configurations for production and staging
     """
     DEBUG = False
+    PROTOCOL = os.environ.get("PROTOCOL", "http")

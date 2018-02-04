@@ -2,6 +2,7 @@ from flask import Flask, session
 from flask_pymongo import PyMongo
 from flask_s3 import FlaskS3
 from flask_bower import Bower
+from flask_sslify import SSLify
 
 import os
 
@@ -19,6 +20,9 @@ else:
 if env == "staging" or env == "prod":
     app.config.from_object('config.ProductionConfig')
     s3 = FlaskS3(app)
+    if os.environ.get("PROTOCOL") == 'https':
+        SSLify(app)
+    
 else:
     app.config.from_object('config.DevelopmentConfig')
 
@@ -34,7 +38,6 @@ else:
             + app.config["MONGO_DB_NAME"])
     except Exception:
         raise Exception("Error building database URI. Are your DB settings properly configured?")
-    
     
 
 # init MongoDB
