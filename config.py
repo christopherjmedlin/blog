@@ -12,6 +12,8 @@ class Config():
     MONGO_DB_HOST = os.environ.get("MONGO_DB_HOST", None)
     MONGO_DB_PORT = os.environ.get("MONGO_DB_PORT", None)
 
+    BLOG_TITLE = os.environ.get("BLOG_TITLE", "Blog")
+
 class DevelopmentConfig(Config):
     """
     Configurations for development and testing
@@ -19,9 +21,6 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
     SECRET_KEY = "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO"
-
-    # placeholder blog title for development
-    BLOG_TITLE = "Blog"
     
 class ProductionConfig(Config):
     """

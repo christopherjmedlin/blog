@@ -98,3 +98,4 @@ venv.bak/
 .mypy_cache/
 
 bower
+.vscode/settings.json
