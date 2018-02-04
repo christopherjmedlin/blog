@@ -43,7 +43,7 @@
 
 .post-content-right {
     display: inline-block;
-    float: left;
+    float: right;
     height: 177px;
     width: 270px;
     overflow: hidden;
@@ -58,7 +58,7 @@
     text-align: center !important;
 }
 .post-topics {
-    padding-top: 25px;
+    padding-top: 200px;
     text-align: center;
 }
 
