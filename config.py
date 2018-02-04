@@ -13,14 +13,13 @@ class Config():
     MONGO_DB_PORT = os.environ.get("MONGO_DB_PORT", None)
 
     BLOG_TITLE = os.environ.get("BLOG_TITLE", "Blog")
+    SECRET_KEY = os.environ.get("SECRET_KEY", "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO")
 
 class DevelopmentConfig(Config):
     """
     Configurations for development and testing
     """
     DEBUG = True
-
-    SECRET_KEY = "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO"
     
 class ProductionConfig(Config):
     """
