@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from flask_script import Manager
+import flask_s3
 
 from werkzeug.security import generate_password_hash
 
@@ -32,6 +33,10 @@ def rmuser():
     username = input("Type the username of the user you want to remove: ")
     
     mongo.db.users.delete_one({"username": username})
+
+@manager.command
+def s3upload():
+    flask_s3.create_all(app)
     
 if __name__ == "__main__":
     manager.run()

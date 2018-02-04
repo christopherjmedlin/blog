@@ -15,6 +15,12 @@ class Config():
     BLOG_TITLE = os.environ.get("BLOG_TITLE", "Blog")
     SECRET_KEY = os.environ.get("SECRET_KEY", "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO")
 
+    # flask-s3 stuff
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    FLASKS3_BUCKET_NAME = "blog-christophermedlinme-static"
+    FLASKS3_REGION = "us-west-2"
+
 class DevelopmentConfig(Config):
     """
     Configurations for development and testing
@@ -26,11 +32,3 @@ class ProductionConfig(Config):
     Configurations for production and staging
     """
     DEBUG = False
-
-    # flask-s3 stuff
-    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    FLASKS3_BUCKET_NAME = "blog-christophermedlinme-static"
-    FLASKS3_REGION = "us-west-2"
-
-    # BLOG_TITLE = "my_blog"
