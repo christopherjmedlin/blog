@@ -32,7 +32,7 @@ else:
             + app.config["MONGO_DB_HOST"] + ":"
             + app.config["MONGO_DB_PORT"] + "/"
             + app.config["MONGO_DB_NAME"])
-    except KeyError:
+    except TypeError:
         raise Exception("""Error building database URI. 
                       Are your DB settings properly configured?""")
     
