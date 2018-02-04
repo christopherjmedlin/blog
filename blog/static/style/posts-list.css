@@ -40,6 +40,10 @@
     height: 240;
 }
 
+.post-content-left img {
+    max-width: 200px;
+}
+
 .post-content-right {
     display: inline-block;
     float: left;
