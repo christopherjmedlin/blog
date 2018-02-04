@@ -5,11 +5,6 @@
     margin-bottom: 20px;
 }
 
-#posts-list li img {
-    height: 150px;
-    margin-right: 20px;
-}
-
 #posts-list {
     width: 500px;
     margin: auto;
@@ -41,7 +36,9 @@
 }
 
 .post-content-left img {
+    margin-right: 20px;
     max-width: 200px;
+    max-height: 160px;
 }
 
 .post-content-right {
