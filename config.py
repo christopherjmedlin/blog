@@ -19,6 +19,7 @@ class Config():
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
     FLASKS3_BUCKET_NAME = "blog-christophermedlinme-static"
+    FLASKS3_CDN_DOMAIN = "d1hw50uwx6u0j3.cloudfront.net"
     FLASKS3_REGION = "us-west-2"
 
 class DevelopmentConfig(Config):
