@@ -9,17 +9,34 @@ import os
 
 env = os.environ.get("FLASK_ENV", "dev")
 
+s3 = None
 if env == "staging" or env == "prod":
     app = Flask(__name__)
-    s3 = FlaskS3(app)
 else:
     # serve static files during development
     app = Flask(__name__, static_url_path='/static')
 
 if env == "staging" or env == "prod":
     app.config.from_object('config.ProductionConfig')
+    s3 = FlaskS3(app)
 else:
     app.config.from_object('config.DevelopmentConfig')
+
+if app.config["MONGO_URI"]:
+    pass
+else:
+    try:
+        app.config["MONGO_URI"] = ("mongodb://" 
+            + app.config["MONGO_DB_USER"] + ":" 
+            + app.config["MONGO_DB_PASSWORD"] + "@" 
+            + app.config["MONGO_DB_HOST"] + ":"
+            + app.config["MONGO_DB_PORT"] + "/"
+            + app.config["MONGO_DB_NAME"])
+    except KeyError:
+        raise Exception("""Error building database URI. 
+                      Are your DB settings properly configured?""")
+    
+    
 
 # init MongoDB
 mongo = PyMongo(app)

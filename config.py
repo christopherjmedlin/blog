@@ -4,8 +4,13 @@ class Config():
     """
     Base configuration
     """
-    MONGO_URI = os.environ.get("MONGO_URI", 
-        "mongodb://user:password@localhost:27017")
+    MONGO_URI = os.environ.get("MONGO_URI", None)
+
+    MONGO_DB_NAME = os.environ.get("MONGO_DB_NAME", None)
+    MONGO_DB_USER = os.environ.get("MONGO_DB_USER", None)
+    MONGO_DB_PASSWORD = os.environ.get("MONGO_DB_PASSWORD", None)
+    MONGO_DB_HOST = os.environ.get("MONGO_DB_HOST", None)
+    MONGO_DB_PORT = os.environ.get("MONGO_DB_PORT", None)
 
 class DevelopmentConfig(Config):
     """
@@ -25,9 +30,9 @@ class ProductionConfig(Config):
     DEBUG = False
 
     # flask-s3 stuff
-    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
-    FLASKS3_BUCKET_NAME = "blog-files"
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    FLASKS3_BUCKET_NAME = "blog-christophermedlinme-static"
     FLASKS3_REGION = "us-west-2"
 
     # BLOG_TITLE = "my_blog"
