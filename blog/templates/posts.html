@@ -9,9 +9,11 @@
 {% block content %}
 {% include 'include/search-bar.html' %}
 {% include 'include/posts-list.html' %}
+{% if more %}
 <div class="next-page-link">
 <a href="{{ nextPage }}">
     Next Page <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </a>
 </div>
+{% endif %}
 {% endblock %}

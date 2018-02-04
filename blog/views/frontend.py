@@ -39,15 +39,18 @@ def posts_search():
         query = { 'topics': topic }
     elif query_string:
         query = { 'title': { '$regex': '.*' + query_string + '.*', '$options': 'i'}}
-
+    
+    more = False
     if query != {}:
         posts = mongo.db.posts.find(query).sort([['_id', -1]])
+        more = posts.count() > page * 5
         posts = posts[(page * 5) - 5:page * 5]
     else:
         posts = {}
     nextPage = utils.build_next_page_url(page, topic=topic, 
                                          query_string=query_string)
-    return render_template('posts.html', posts=posts, nextPage=nextPage)
+    return render_template('posts.html', posts=posts, nextPage=nextPage,
+                            more=more)
 
 @app.route('/posts/<id>')
 def view_post(id):
