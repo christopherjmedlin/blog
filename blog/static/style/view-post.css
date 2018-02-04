@@ -12,3 +12,7 @@
 #disqus_thread {
     margin-top: 50px;
 }
+
+.content img {
+    max-width: 500px;
+}
