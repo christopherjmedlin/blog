@@ -70,7 +70,7 @@ def login():
         if user and check_password_hash(user["password"], form.password.data):
             session["username"] = user["username"]
             session["authenticated"] = True
-            session["isAdmin"] = user["admin"]
+            session["isAdmin"] = user["admin"] if 'admin' in user else None
             return redirect(form.redirect.data)
         else:
             err = "Invalid username or password"
