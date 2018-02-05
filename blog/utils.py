@@ -73,6 +73,10 @@ def parse_json_post_data(json_data):
     data['content'] = html
     data['author'] = session['username']
     data['img'] = get_first_img(html)
+    
+    if 'topics' in data:
+        for count in range(0, len(data['topics'])):
+            data['topics'][count] = data['topics'][count].lower()
     return data
 
 #########################

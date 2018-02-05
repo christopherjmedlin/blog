@@ -25,6 +25,9 @@ def posts_search():
     query_string = request.args.get('q', None)
     user = request.args.get('user', None)
 
+    if topic:
+        topic = topic.lower()
+        
     try:
         page = int(request.args.get('page', 1))
     except Exception:
