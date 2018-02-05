@@ -31,14 +31,25 @@ def posts_search():
     
     query = {}
     if topic and query_string:
-        query = { "$and": [
+        regex = { '$regex': '.*' + query_string + '.*','$options': 'i'}
+        query = { "$and": 
+        [   
             { 'topics': topic },
-            { 'title': { '$regex': '.*' + query_string + '.*','$options': 'i'}}
+            { "$or":
+            [
+                { 'title': regex },
+                { 'content': regex}
+            ]}
         ]}
     elif topic:
         query = { 'topics': topic }
     elif query_string:
-        query = { 'title': { '$regex': '.*' + query_string + '.*', '$options': 'i'}}
+        regex = { '$regex': '.*' + query_string + '.*','$options': 'i'}
+        query = { "$or":
+        [
+            { 'title': regex },
+            { 'content': regex }
+        ]}
     
     more = False
     if query != {}:
