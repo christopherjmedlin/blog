@@ -23,6 +23,7 @@ def index():
 def posts_search():
     topic = request.args.get('topic', None)
     query_string = request.args.get('q', None)
+    user = request.args.get('user', None)
 
     try:
         page = int(request.args.get('page', 1))
@@ -50,6 +51,8 @@ def posts_search():
             { 'title': regex },
             { 'content': regex }
         ]}
+    elif user:
+        query = { 'author': user }
     
     more = False
     if query != {}:
