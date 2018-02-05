@@ -34,6 +34,14 @@ def sanitize_html(html):
 
     return str(soup.renderContents().decode('ascii'))
 
+def html_preview(html):
+    soup = BeautifulSoup(html, 'html.parser')
+
+    for tag in soup.findAll(True):
+        tag.hidden = True
+    
+    return str(soup.renderContents().decode('ascii'))
+
 def get_first_img(html):
 
     soup = BeautifulSoup(html, 'html.parser')
@@ -60,11 +68,11 @@ def parse_json_post_data(json_data):
     markdown = Markdown()
     html = markdown(data['content'])
     html = sanitize_html(html)
+    data['preview'] = html_preview(html)
     data['markdown'] = data['content']
     data['content'] = html
     data['author'] = session['username']
     data['img'] = get_first_img(html)
-    data['markdown'] 
     return data
 
 #########################
