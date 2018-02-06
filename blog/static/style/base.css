@@ -109,3 +109,9 @@ a {
 #post-content {
     text-align: left;
 }
+
+@media only screen and (max-width: 450px) {
+    .navbar-nav ul {
+        width: 375px;
+    }
+}

@@ -49,8 +49,10 @@
     margin-bottom: 20px;
 }
 
-.post-content-right.alt {
-    width: 500px !important;
+@media only screen and (min-width: 600px) {
+    .post-content-right.alt {
+        width: 500px !important;
+    }
 }
 
 .post-content-right.alt .content-preview {
@@ -68,4 +70,18 @@ h2 {
 .next-page-link {
     text-align: center;
     margin: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+    #posts-list {
+        width: 300px;
+    }
+
+    .post-content-left {
+        display: none;
+    }
+    
+    .post-content-right {
+        width: 300px !important;
+    }
 }
