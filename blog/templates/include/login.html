@@ -1,8 +1,8 @@
 <div class="component" id="login">
     <p class="err">{{ err }}</p>
     <form class="login-form" action="{{ url_for('login') }}" method="post">
-        Username: <input name="username" type="text" placeholder="Username"><br />
-        Password: <input name="password" type="password" placeholder="Password"><br />
+        <input name="username" type="text" placeholder="Username"><br />
+        <input name="password" type="password" placeholder="Password"><br />
         <input name="redirect" type="hidden" value="{{ redirect }}">
         <input type="submit">
     </form>

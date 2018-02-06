@@ -18,9 +18,8 @@
         <p class="err err-title-too-long">
             Title must be less than 100 characters
         </p><br />
-        Title: <input type="text" value="{% if post %}{{ post.title }}{% endif %}"/>
+        <input class="title-input" type="text" value="{% if post %}{{ post.title }}{% endif %}" placeholder="Title"/>
     </div>
-    <h3>Topics</h3>
     <p class="err err-too-many-topics">
         Only 15 maximum topics allowed
     </p>
