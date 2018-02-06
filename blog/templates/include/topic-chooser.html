@@ -2,6 +2,6 @@
     {% if post %}
     <input class="topics" type="text" value="{% for topic in post.topics %}{{topic}}, {% endfor %}">
     {% else %}
-    <input class="topics" type="text" value="topic1, topic2">
+    <input class="topics" type="text" placeholder="topic1, topic2">
     {% endif %}
 </div>
