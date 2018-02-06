@@ -1,7 +1,9 @@
 <div class="component" id="post">
     <h1>{{ post.title }}</h1>
 
-    {{post.content|safe}}
+    <div id="post-content">
+        {{post.content|safe}}
+    </div>
 
     <!-- Disqus stuff -->
 

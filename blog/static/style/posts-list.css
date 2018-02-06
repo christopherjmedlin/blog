@@ -10,14 +10,13 @@
     margin: auto;
     position: relative;
     padding: 0px;
-    text-align: center;
 }
 
 .posts-list {
     padding: 0px;
 }
 
-#posts-list .content-preview {
+.content-preview {
     text-align: left; 
     height: 100px;
 }
@@ -55,7 +54,7 @@
 }
 
 .post-content-right.alt .content-preview {
-    text-align: center !important;
+    text-align: left;
 }
 .post-topics {
     padding-top: 200px;
