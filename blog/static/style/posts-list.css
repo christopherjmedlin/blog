@@ -29,7 +29,6 @@
 }
 
 .post-content-left {
-    display: inline-block;
     float: left;
     height: 240;
 }
@@ -41,7 +40,6 @@
 }
 
 .post-content-right {
-    display: inline-block;
     float: right;
     height: 177px;
     width: 270px;
