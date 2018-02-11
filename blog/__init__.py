@@ -51,9 +51,4 @@ def inject_title():
     except AttributeError:
         return dict(blog_title="My Blog")
 
-# inject session into templates
-@app.context_processor
-def inject_session():
-    return dict(session=session)
-
 from . import forms, views
