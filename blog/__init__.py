@@ -6,7 +6,7 @@ from flask_sslify import SSLify
 
 import os
 
-# typically this web app should be ran like this:
+# typically this web app should be run like this:
 
 env = os.environ.get("FLASK_ENV", "dev")
 
@@ -29,6 +29,9 @@ else:
 if app.config["MONGO_URI"]:
     pass
 else:
+    # had some trouble properly escaping the mongo URI on
+    # AWS elastic beanstalk, so i added the option of building
+    # a mongo URI from several other variables
     try:
         app.config["MONGO_URI"] = ("mongodb://" 
             + app.config["MONGO_DB_USER"] + ":" 
