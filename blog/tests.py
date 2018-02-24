@@ -2,6 +2,7 @@ from blog import app, mongo
 from . import utils, html
 
 from functools import wraps
+import json
 
 def app_test(f):
     @wraps(f)
@@ -38,3 +39,21 @@ def test_get_first_img():
     html_two = '<p>This HTML has no image</p>'
     assert html.get_first_img(html_one) == "https://image.com/img.jpg"
     assert html.get_first_img(html_two) == None
+
+def test_build_next_page_url():
+    assert utils.build_next_page_url(1) == "/posts?&page=2"
+    assert utils.build_next_page_url(3, "python", "search") == \
+        "/posts?topic=python&q=search&page=4"
+    assert utils.build_next_page_url(100, "topic") == \
+        "/posts?topic=topic&page=101"
+
+def test_parse_json_post_data():
+    json_data = json.dumps({
+        "title": "Title",
+        "content": "![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)",
+        "topics": ["TeST", "STuFf"]
+    })
+    data = utils.parse_json_post_data(json_data, "Human Being")
+    assert data["img"] == "https://octodex.github.com/images/yaktocat.png"
+    assert data["topics"][0] == "test"
+    assert data["author"] == "Human Being"
