@@ -12,7 +12,7 @@ from werkzeug.security import check_password_hash
 
 from blog import app, mongo, utils
 from blog.forms import LoginForm
-from blog.utils import auth_route
+from blog.decorators import auth_route
 
 @app.route('/')
 def index():

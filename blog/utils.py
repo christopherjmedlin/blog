@@ -58,16 +58,3 @@ def parse_json_post_data(json_data, post_author):
 # Decoraters
 #########################
 
-def auth_route(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        try:
-            if session['authenticated']:
-                return f(*args, **kwargs)                        
-            else:
-                path = request.path
-                return redirect('/login?redirect=' + path)
-        except KeyError:
-            return redirect('/login?redirect=' + request.path)
-
-    return decorated_function
