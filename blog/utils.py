@@ -8,7 +8,8 @@ from functools import wraps
 import datetime
 import json
 
-VALID_TAGS = ['strong', 'em', 'p', 'ul', 'li', 'br', 'img', 'a']
+VALID_TAGS = ['strong', 'em', 'p', 'ul', 'li', 'br', 'img', 'a', 'h1',
+              'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'code']
 
 #########################
 # Utility functions
