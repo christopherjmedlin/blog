@@ -16,14 +16,13 @@ VALID_TAGS = ['strong', 'em', 'p', 'ul', 'li', 'br', 'img', 'a', 'h1',
 #########################
 
 def json_error(message, code=505):
-    return """
-    {
+    return json.dumps({
         "error": {
-            "code": {},
-            "message": {},
+            "code": code,
+            "message": message,
         }
-    }
-    """.format(code, message)
+    })
+
 
 def sanitize_html(html):
 
