@@ -10,10 +10,6 @@ import json
 
 from . import html
 
-#########################
-# Utility functions
-#########################
-
 def json_error(message, code=505):
     return json.dumps({
         "error": {
@@ -53,8 +49,3 @@ def parse_json_post_data(json_data, post_author):
             data['topics'][count] = data['topics'][count].lower()
 
     return data
-
-#########################
-# Decoraters
-#########################
-
