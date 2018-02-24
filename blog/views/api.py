@@ -37,7 +37,7 @@ def posts_create():
 
 @app.route('/api/v1/posts/<id>', methods=['DELETE'])
 def posts_delete(id):
-    result = mongo.db.posts.delete_one({"_id": ObjectId(id)})
+    mongo.db.posts.delete_one({"_id": ObjectId(id)})
     return Response(status=200)
 
 @app.route('/api/v1/posts/<id>', methods=['GET'])
