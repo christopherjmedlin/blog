@@ -1,10 +1,10 @@
 import os
+import unittest
 
 class Config():
     """
     Base configuration
     """
-    MONGO_URI = os.environ.get("MONGO_URI", None)
 
     MONGO_DB_NAME = os.environ.get("MONGO_DB_NAME", None)
     MONGO_DB_USER = os.environ.get("MONGO_DB_USER", None)
@@ -14,6 +14,8 @@ class Config():
 
     BLOG_TITLE = os.environ.get("BLOG_TITLE", "Blog")
     SECRET_KEY = os.environ.get("SECRET_KEY", "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO")
+
+    TEST_RUNNER = unittest.TextTestRunner()
 
     # flask-s3 stuff
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
@@ -27,6 +29,7 @@ class DevelopmentConfig(Config):
     Configurations for development and testing
     """
     DEBUG = True
+    MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/test")
     
 class ProductionConfig(Config):
     """
@@ -34,3 +37,4 @@ class ProductionConfig(Config):
     """
     DEBUG = False
     PROTOCOL = os.environ.get("PROTOCOL", "http")
+    MONGO_URI = os.environ.get("MONGO_URI", None)

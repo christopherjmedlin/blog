@@ -99,3 +99,5 @@ venv.bak/
 
 bower
 .vscode/settings.json
+
+.pytest_cache/

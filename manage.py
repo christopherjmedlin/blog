@@ -6,6 +6,7 @@ import flask_s3
 from werkzeug.security import generate_password_hash
 
 import getpass
+import pytest
 
 from blog import app, mongo
 
@@ -37,6 +38,10 @@ def rmuser():
 @manager.command
 def s3upload():
     flask_s3.create_all(app)
+
+@manager.command
+def test():
+    import blog.tests; pytest.main(["blog/tests.py"])
     
 if __name__ == "__main__":
     manager.run()
