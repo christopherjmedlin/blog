@@ -93,7 +93,7 @@ def test_posts_update():
         "content": "New Content"
     })
     id = result.inserted_id
-    response = client.post('/api/v1/posts/edit/' + str(id), data=data)
+    response = client.put('/api/v1/posts/' + str(id), data=data)
 
     assert response.status == '200 OK'
     assert mongo.db.posts.find_one({"_id": id})["title"] == "New Title"

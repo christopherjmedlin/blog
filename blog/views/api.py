@@ -51,7 +51,7 @@ def posts_retrieve(id):
     post = mongo.db.posts.find_one({"_id": ObjectId(id)})
     return render_template('xml/post.xml', post=post, markdown=markdown)
 
-@app.route('/api/v1/posts/edit/<id>', methods=['POST'])
+@app.route('/api/v1/posts/<id>', methods=['PUT'])
 def posts_update(id):
     data = utils.parse_json_post_data(request.data, session['username'])
     
