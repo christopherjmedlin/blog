@@ -41,11 +41,6 @@ def s3upload():
 
 @manager.command
 def test():
-    import blog.tests
-
-    # shut up pylint
-    blog.tests
-    
     pytest.main(["blog/tests.py"])
     
 if __name__ == "__main__":
