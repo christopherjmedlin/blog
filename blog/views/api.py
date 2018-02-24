@@ -53,7 +53,7 @@ def posts_retrieve(id):
 
 @app.route('/api/v1/posts/edit/<id>', methods=['POST'])
 def posts_update(id):
-    data = utils.parse_json_post_data(request.data)
+    data = utils.parse_json_post_data(request.data, session['username'])
     
     if mongo.db.posts.update_one({'_id': ObjectId(id)}, {"$set": data}):
         return Response(status=200)
