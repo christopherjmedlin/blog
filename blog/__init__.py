@@ -49,9 +49,8 @@ mongo = PyMongo(app)
 # inject blog title into the context of every template
 @app.context_processor
 def inject_title():
-    try:
-        return dict(blog_title=app.config["BLOG_TITLE"])
-    except AttributeError:
-        return dict(blog_title="My Blog")
+    return dict(blog_title=app.config["BLOG_TITLE"],
+                blog_description=app.config["BLOG_DESCRIPTION"],
+                blog_url=app.config["BLOG_URL"])
 
 from . import forms, views

@@ -13,6 +13,9 @@ class Config():
     MONGO_DB_PORT = os.environ.get("MONGO_DB_PORT", None)
 
     BLOG_TITLE = os.environ.get("BLOG_TITLE", "Blog")
+    BLOG_DESCRIPTION = os.environ.get("BLOG_DESCRIPTION", 
+        "Default description for https://github.com/christopherjmedlin/blog.christophermedlin.me")
+    BLOG_URL = os.environ.get("BLOG_URL", "https://blog.christophermedlin.me")
     SECRET_KEY = os.environ.get("SECRET_KEY", "?UWyue['(R0pM.9(v/Y=U_lJNn*ClO")
 
     TEST_RUNNER = unittest.TextTestRunner()
