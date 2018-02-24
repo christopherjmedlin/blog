@@ -28,7 +28,7 @@ def posts_list():
 
 @app.route('/api/v1/posts', methods=['POST'])
 def posts_create():
-    data = utils.parse_json_post_data(request.data)
+    data = utils.parse_json_post_data(request.data, session['username'])
 
     if mongo.db.posts.insert_one(data):
         return Response(status=200)

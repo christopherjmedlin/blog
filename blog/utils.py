@@ -8,6 +8,8 @@ from functools import wraps
 import datetime
 import json
 
+from . import html
+
 #########################
 # Utility functions
 #########################
@@ -29,22 +31,27 @@ def build_next_page_url(page, topic=None, query_string=None):
     nextPage += '&page=' + str(page + 1)
     return nextPage
 
-def parse_json_post_data(json_data):
+def parse_json_post_data(json_data, post_author):
     data = json.loads(json_data)
-    data["posted"] = datetime.datetime.utcnow()
 
+    if 'title' not in data:
+        raise Exception("No title found in data")
+
+    data["posted"] = datetime.datetime.utcnow()
     markdown = Markdown()
-    html = markdown(data['content'])
-    html = html.sanitize_html(html)
-    data['preview'] = html.html_preview(html)
+    content = markdown(data['content'])
+    content = html.sanitize_html(content)
+
+    data['preview'] = html.html_preview(content)
     data['markdown'] = data['content']
-    data['content'] = html
-    data['author'] = session['username']
-    data['img'] = html.get_first_img(html)
+    data['content'] = content
+    data['author'] = post_author
+    data['img'] = html.get_first_img(content)
     
     if 'topics' in data:
         for count in range(0, len(data['topics'])):
             data['topics'][count] = data['topics'][count].lower()
+
     return data
 
 #########################
