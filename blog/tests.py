@@ -2,14 +2,11 @@ from blog import app, mongo
 from . import utils, html
 
 from functools import wraps
-import json
+import json, random, string
 
-def app_test(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        app_client = app.test_client()
-
-    return decorated_function
+client = app.test_client()
+with client.session_transaction() as sess:
+    sess["username"] = "test"
 
 #########################
 # Unit Tests
@@ -57,3 +54,48 @@ def test_parse_json_post_data():
     assert data["img"] == "https://octodex.github.com/images/yaktocat.png"
     assert data["topics"][0] == "test"
     assert data["author"] == "Human Being"
+
+#########################
+# Integration Tests
+#########################
+
+def test_posts_create():
+    content = ''.join(random.choice(string.ascii_lowercase) for i in range(20))
+    response = client.post('/api/v1/posts', data=json.dumps({
+        "title": "Title",
+        "content": content,
+        "topics": ["test", "stuff"]
+    }))
+
+    assert response.status == '200 OK'
+    assert mongo.db.posts.find({"content": "<p>" + content + "</p>\n"}).count() > 0
+
+def test_posts_delete():
+    result = mongo.db.posts.insert_one({
+        "title": "Title",
+        "content": "Content",
+        "topics": ["test", "stuff"]
+    })
+    id = result.inserted_id
+    response = client.delete('/api/v1/posts/' + str(id))
+
+    assert response.status == '200 OK'
+    assert mongo.db.posts.find({"id": id}).count() == 0
+
+def test_posts_update():
+    result = mongo.db.posts.insert_one({
+        "title": "Title",
+        "content": "Content",
+        "topics": ["test", "stuff"]
+    })
+    data = json.dumps({
+        "title": "New Title",
+        "content": "New Content"
+    })
+    id = result.inserted_id
+    response = client.post('/api/v1/posts/edit/' + str(id), data=data)
+
+    assert response.status == '200 OK'
+    assert mongo.db.posts.find_one({"_id": id})["title"] == "New Title"
+    assert ("New Content" in mongo.db.posts.find_one({"_id": id})["content"])
+
