@@ -118,4 +118,9 @@ def new_post():
 def edit_post(id):
     post = mongo.db.posts.find_one({'_id': ObjectId(id)})
     return render_template('post-editor.html', post=post, edit=True)
+
+@app.route('/rss/rss.xml', methods=['GET'])
+def rss():
+    posts = mongo.db.posts.find({}).sort([['_id', -1]])[:5]
+    return render_template('xml/rss.xml', posts=posts)
     
