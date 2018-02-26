@@ -48,4 +48,14 @@ def parse_json_post_data(json_data, post_author):
         for count in range(0, len(data['topics'])):
             data['topics'][count] = data['topics'][count].lower()
 
-    return data
+    # recreate dictionary to remove any unwanted fields the client
+    # could have included in the post
+    return {
+        "title": data["title"],
+        "posted": data["posted"],
+        "preview": data["preview"],
+        "markdown": data["markdown"],
+        "content": data["content"],
+        "author": data["author"],
+        "img": data["author"],
+    }
